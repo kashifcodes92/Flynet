@@ -1,0 +1,37 @@
+# -------------------------------------------------------------
+# 1. DEPENDENCIES & BUILD OUTPUT (Mandatory)
+# -------------------------------------------------------------
+/node_modules
+/dist
+/build
+/out
+/coverage
+/public/dist # If Vite generates a build output inside public
+
+# -------------------------------------------------------------
+# 2. LOGS & LOCKFILES (Generated during dependency management)
+# -------------------------------------------------------------
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json # Only include if you don't use it strictly for dependency locking
+# yarn.lock # Include if you use yarn but exclude for npm projects
+# pnpm-lock.yaml
+
+# -------------------------------------------------------------
+# 3. ENVIRONMENT & SECRETS (CRITICAL SECURITY FIX)
+# -------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+.gitcredentials
+.DS_Store
+.vscode
+.idea
+*.sublime-project
+*.sublime-workspace
+
+# Postman Files (CRITICAL SECURITY)
+flynet.postman_collection.json # Ignore the file containing the live Bearer Token
+*.postman_environment.json
