@@ -14,6 +14,7 @@ import Reports from '@/pages/SuperAdmin/Reports.jsx';
 import Communicator from '@/pages/SuperAdmin/Communicator.jsx';
 import NotificationCenter from '@/pages/SuperAdmin/NotificationCenter.jsx';
 import PackageSubscriptions from '@/pages/SuperAdmin/PackageSubscriptions.jsx'; 
+import Profile from '@/pages/VMS/Profile.jsx';
 import MyCameras from '@/pages/VMS/MyCameras.jsx';
 import MyVideos from '@/pages/VMS/MyVideos.jsx';
 import MyAlarms from '@/pages/VMS/MyAlarms.jsx';
@@ -79,7 +80,12 @@ function App() {
 
             {/* 2. PROTECTED ROUTE CHECK (Handles base path "/") */}
             <Route path="/" element={isAuthenticated ? <Navigate to={getInitialRedirectPath()} replace /> : <Navigate to="/login" replace />} />
-
+            <Route 
+                path="/user/profile" 
+                element={<PrivateRoute><MainLayout userRole={userRole} /></PrivateRoute>}
+            >
+                <Route index element={<Profile />} /> 
+            </Route>
             {/* --- 3. SUPER ADMIN (SAAS) ROUTES (/admin/*) --- */}
             <Route path="/admin/*" element={<PrivateRoute requiredRole="SUPER_ADMIN"><MainLayout userRole={userRole} /></PrivateRoute>}>
                 <Route index element={<Navigate to="dashboard" replace />} />

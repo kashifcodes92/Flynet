@@ -18,7 +18,7 @@ const AuthLayout = ({ children, title = 'flynet', subtitle = 'Super Admin' }) =>
                     height: '100vh', // Forces full viewport height for this column
                     
                     // Background image (network pattern)
-                    backgroundImage: 'url(public\assets\SAAS-images\login-left-shapes.png)', // Use the specific left shape image
+                    backgroundImage: 'url(\login-left-shapes.png)', // Use the specific left shape image
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
 

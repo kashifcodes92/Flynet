@@ -15,16 +15,16 @@ const Sidebar = ({ userRole, drawerWidth, variant = 'permanent', mobileOpen = fa
     const menuContent = (
         <Box onClick={handleDrawerToggle} onKeyDown={handleDrawerToggle} sx={{ pt: 1 }}>
             {/* Logo and App Name Area */}
-            <Toolbar sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', p: 2 }}>
+            <Toolbar sx={{ display: 'flex', flexDirection: 'column', alignItems: 'top', justifyContent: 'center', p: 2, mt: -9 }}>
                 {/* LOGO PATH FIX: Use the stable public path */}
-                <img 
+                {/* <img 
                     src="/flynet-logo.png" 
                     alt="flynet Logo" 
                     style={{ height: 35, marginBottom: 5 }}
                 />
                 <Typography variant="caption" sx={{ color:theme.palette.primary.main }}>
                     {userRole === 'SUPER_ADMIN' ? 'Super Admin' : 'VMS Panel'}
-                </Typography>
+                </Typography> */}
             </Toolbar>
             <Divider sx={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }} />
             
