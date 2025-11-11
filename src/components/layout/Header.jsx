@@ -17,8 +17,8 @@ const Header = ({ drawerWidth, handleDrawerToggle }) => {
     const languages = [
         // CRITICAL: We reference the image asset path
         { code: 'en-US', name: 'EN-US', image: '/US-flag.png' },
-        { code: 'es', name: 'ES', image: '/assets/images/flag-es.png' },
-        { code: 'pt-BR', name: 'PT-BR', image: '/assets/images/flag-br.png' },
+        { code: 'es', name: 'ES', image: '/flag-es.png' },
+        { code: 'pt-BR', name: 'PT-BR', image: '/flag-br.png' },
     ];
     
     const [anchorEl, setAnchorEl] = useState(null);

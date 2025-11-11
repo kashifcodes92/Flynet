@@ -41,12 +41,12 @@ const Sidebar = ({ userRole, drawerWidth, variant = 'permanent', mobileOpen = fa
                                 sx={{
                                     py: 1,
                                     '&.Mui-selected': { 
-                                        backgroundColor: theme.palette.background.default, // Light background for active
+                                        backgroundColor: '#20418386', // Light background for active
                                         color: theme.palette.primary.main, // Dark text for active
                                         borderLeft: `4px solid ${theme.palette.error.main}`, // Red accent border
-                                        '&:hover': { backgroundColor: '#14285063',color: '#FFF' },
+                                        '&:hover': { backgroundColor: '#14285063',color: '#021842ff' },
                                     },
-                                    '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
+                                    '&:hover': { backgroundColor: 'rgba(4, 6, 99, 0.35)' },
                                     pl: 2.5 // Left padding for spacing
                                 }}
                             >

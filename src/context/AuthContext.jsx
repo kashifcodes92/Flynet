@@ -1,56 +1,51 @@
-// src/context/AuthContext.jsx
+// src/context/AuthContext.jsx (FINAL ROLE FIX)
 
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// NOTE: We keep the import for loginUser to make the file structure complete, 
-// but we won't call it in the current stable mock login function.
-import { loginUser } from "../utils/apiService.js"; 
+import { loginUser, logoutUser } from "../utils/apiService.js"; 
 
 export const AuthContext = createContext(null);
 
-// Function to check local storage for persistent login (Auth Token)
 const getInitialUser = () => {
-    // In a real application, you would check for localStorage.getItem('authToken');
-    // For now, we return null to ensure the application starts UN-authenticated.
     return null; 
 };
 
 export const AuthProvider = ({ children }) => {
-    // State starts as null to force the Login screen redirect
     const [user, setUser] = useState(getInitialUser); 
     const isAuthenticated = !!user;
     const navigate = useNavigate();
 
-    // Effect to handle state changes (saving user/token on success, clearing on logout)
     useEffect(() => {
         if (user) {
-            // This is where you would store the user object and token upon successful login
-            // localStorage.setItem('user', JSON.stringify(user));
-            // localStorage.setItem('authToken', user.token); 
+            localStorage.setItem('user', JSON.stringify(user));
         } else {
-            // Clears any potential leftover data
             localStorage.removeItem('user');
             localStorage.removeItem('authToken');
         }
     }, [user]);
 
 
-    // FINAL STABLE MOCK LOGIN LOGIC
-    const login = async (email, password) => { // Remains async for future API switch
+    // MOCK LOGIN FUNCTION IS NOW UPDATED TO ACCEPT userType
+    const login = async (email, password, userType) => { 
         try {
-            // 1. Simulate API Call (Success if fields match mock credentials)
+            // Mock API Success Check
             if (email === "test@admin.com" && password === "******") { 
                 
-                // --- Switch to API Call when ready ---
-                // const data = await loginUser({ email, password }); 
-                // const { token, user: userData } = data;
+                // CRITICAL FIX: Use the selected userType to assign the role
+                const userData = { name: "Test User", email, role: userType }; 
                 
-                // Mock user object returned from successful API/Mock
-                const userData = { name: "Super Admin", email, role: "TENANT_ADMIN" }; 
+                // Store the token (mocking successful API call)
+                // In a real app, data from loginUser() would contain token
+                // and we would use userType to direct the navigation logic.
                 
-                // 2. Set State and Navigate
+                // 1. Set State and Navigate
                 setUser(userData); 
-                navigate("/sa/dashboard"); 
+                
+                if (userType === 'SUPER_ADMIN') {
+                    navigate("/admin/dashboard"); 
+                } else { // TENANT_ADMIN
+                    navigate("/vms-client/my-cameras");
+                }
                 return true;
             } else {
                 alert("Login Failed: Invalid credentials or network error.");
@@ -64,8 +59,8 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const logout = () => {
-        // Clear user state and navigate back to the login page upon logout
+    const logout = async () => {
+        // Clear client-side state and redirect
         setUser(null);
         navigate("/login");
     };

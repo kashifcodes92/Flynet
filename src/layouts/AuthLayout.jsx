@@ -1,24 +1,24 @@
-// src/layouts/AuthLayout.jsx (FINAL AND COMPLETE CODE)
+// src/layouts/AuthLayout.jsx (FINAL BACKGROUND FIX)
 
 import React from 'react';
 import { Box, Paper, Grid, Typography } from '@mui/material';
-// CRITICAL FIX: Import the image as a module asset (Vite/Webpack required method)
-import loginBackground from '../assets/images/login-background.jpg'; 
 
 const AuthLayout = ({ children, title = 'flynet', subtitle = 'Super Admin' }) => {
     return (
         <Grid container component="main" sx={{ height: '100vh' }}>
-            {/* Left Side: Dark Branding Area (Login Screen) */}
+            {/* Left Side: Dark Branding Area (Pattern Overlay) */}
             <Grid
                 item
                 xs={false}
                 sm={4}
                 md={6}
                 sx={{
+                    // CRITICAL FIX 1: Ensure background covers 100% height of the container
                     backgroundColor: (theme) => theme.palette.primary.main, 
+                    height: '100vh', // Forces full viewport height for this column
                     
-                    // FIX APPLIED: Use the imported variable for the backgroundImage URL
-                    backgroundImage: `url(${loginBackground})`, 
+                    // Background image (network pattern)
+                    backgroundImage: 'url(public\assets\SAAS-images\login-left-shapes.png)', // Use the specific left shape image
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
 
@@ -31,9 +31,9 @@ const AuthLayout = ({ children, title = 'flynet', subtitle = 'Super Admin' }) =>
                 }}
             >
                 <Box sx={{ textAlign: 'center' }}>
-                    {/* Logo path fix: Use the stable public path */}
+                    {/* Logo Image */}
                     <img 
-                        src="/auth-logo.png" 
+                        src="public\images\auth-logo.png" // Use the specific auth logo
                         alt="flynet Logo" 
                         style={{ height: 60, marginBottom: 10 }}
                     />
@@ -46,8 +46,20 @@ const AuthLayout = ({ children, title = 'flynet', subtitle = 'Super Admin' }) =>
                 </Box>
             </Grid>
 
-            {/* Right Side: Form Content Area */}
-            <Grid item xs={12} sm={8} md={6} component={Paper} elevation={0} square>
+            {/* Right Side: Form Content Area (Relies on Global Background) */}
+            <Grid 
+                item 
+                xs={12} 
+                sm={8} 
+                md={6} 
+                component={Paper} 
+                elevation={0} 
+                square
+                sx={{
+                    // CRITICAL FIX 2: Ensure background is transparent so global background shows
+                    backgroundColor: 'transparent', 
+                }}
+            >
                 <Box
                     sx={{
                         my: 4,

@@ -1,4 +1,4 @@
-// src/layouts/MainLayout.jsx (FINAL AND COMPLETE CODE)
+// src/layouts/MainLayout.jsx (CRITICAL GLOBAL BACKGROUND FIX)
 
 import React from 'react';
 import { Box, Toolbar, CssBaseline, useTheme } from '@mui/material';
@@ -17,7 +17,21 @@ export default function MainLayout({ userRole }) {
   };
     
   return (
-    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+    <Box 
+        sx={{ 
+            display: 'flex', 
+            minHeight: '100vh', 
+            width: '100vw', // Ensure full viewport width
+            
+            // CRITICAL FIX: Global Background Applied Here
+            // Assuming the subtle shape image is accessible from the public root
+            backgroundImage: 'url(public\assets\SAAS-images\background.png)', 
+            backgroundSize: 'cover',
+            backgroundPosition: 'top left',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: theme.palette.background.default, 
+        }}
+    >
       <CssBaseline /> 
 
       {/* Header component (Pass toggle handler for mobile menu) */}
@@ -49,21 +63,18 @@ export default function MainLayout({ userRole }) {
       </Box>
 
 
-      {/* Main Content Area (Now correct due to responsive fixes) */}
+      {/* Main Content Area */}
       <Box
         component="main"
         sx={{
-          flexGrow: 1,
-          p: 3, 
-          width: { xs: '100%', sm: `calc(100% - ${drawerWidth}px)` },
-          backgroundColor: theme.palette.background.default, 
-          minHeight: '100vh', 
+            flexGrow: 1,
+            p: 3, 
+            width: { xs: '100%', sm: `calc(100% - ${drawerWidth}px)` },
+            minHeight: '100vh', 
+            backgroundColor: 'transparent', // Let the global background show through
         }}
       >
-        {/* Adds spacing equal to the Toolbar height (Header) */}
         <Toolbar /> 
-        
-        {/* Renders the specific page */}
         <Outlet /> 
       </Box>
     </Box>
