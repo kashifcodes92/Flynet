@@ -12,10 +12,10 @@ export default function GeneralSettings() {
             <Typography variant="h6" gutterBottom>General Information</Typography>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={4}>
-                    <TextField label="Business Name" fullWidth defaultValue="Ultimate POS" size="small" />
+                    <TextField label="Business Name" fullWidth defaultValue="Flynet" size="small" />
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                    <TextField label="Email" fullWidth defaultValue="thewebfosters@gmail.com" size="small" />
+                    <TextField label="Email" fullWidth defaultValue="flynetABC@gmail.com" size="small" />
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <TextField select label="Currency" fullWidth defaultValue="USD" size="small">

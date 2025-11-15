@@ -14,6 +14,8 @@ import Reports from '@/pages/SuperAdmin/Reports.jsx';
 import Communicator from '@/pages/SuperAdmin/Communicator.jsx';
 import NotificationCenter from '@/pages/SuperAdmin/NotificationCenter.jsx';
 import PackageSubscriptions from '@/pages/SuperAdmin/PackageSubscriptions.jsx'; 
+import AddBusiness from '@/pages/SuperAdmin/AddBusiness.jsx';
+
 import Profile from '@/pages/VMS/Profile.jsx';
 import MyCameras from '@/pages/VMS/MyCameras.jsx';
 import MyVideos from '@/pages/VMS/MyVideos.jsx';
@@ -97,6 +99,7 @@ function App() {
                 <Route path="communicator" element={<Communicator />} />
                 <Route path="notifications" element={<NotificationCenter />} />
                 <Route path="subscriptions" element={<PackageSubscriptions />} />
+                <Route path="businesses/add" element={<AddBusiness />} />
             </Route>
             
             {/* --- 4. VMS CLIENT (TENANT) ROUTES (/vms-client/*) --- */}
